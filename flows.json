@@ -1,0 +1,68 @@
+[
+    {
+        "id": "dd59c2ba.806b8",
+        "label": "new package",
+        "type": "tab"
+    },
+    {
+        "id": "f6c0abf1.81c068",
+        "type": "sensingkit",
+        "z": "dd59c2ba.806b8",
+        "name": "",
+        "subtype": "accelerometer",
+        "x": 207.5,
+        "y": 351,
+        "wires": [
+            [
+                "b14bda28.5afcc8"
+            ]
+        ]
+    },
+    {
+        "id": "b14bda28.5afcc8",
+        "type": "dbfunction",
+        "z": "dd59c2ba.806b8",
+        "name": "",
+        "func": "const {x,y,z} = msg.payload;\n\nconst amplitude = Math.sqrt(Math.pow(x,2) + Math.pow(y, 2) + Math.pow(z, 2))\n\nconst lines = [\n    \"There was an old man with a beard\",\n    \"A funny old man with a beard\",\n    \"He had a big beard\",\n    \"A great big old beard\",\n    \"That amusing old man with a beard\",\n]\n\nif (amplitude > 45){\n    const index = context.get(\"index\") || 0;\n    context.set(\"index\", index+1);\n    return {\n        payload: lines[index%lines.length]\n    }\n}",
+        "outputs": 1,
+        "inputtypedef": "",
+        "outputtypedef": "{\n    \"type\": \"object\",\n    \"properties\": {\n        \"payload\": {\n            \"type\": \"literal\"\n        }\n    }\n}",
+        "noerr": 0,
+        "x": 359,
+        "y": 357,
+        "wires": [
+            [
+                "e954ee55.0dd48"
+            ]
+        ]
+    },
+    {
+        "id": "e954ee55.0dd48",
+        "type": "webify",
+        "z": "dd59c2ba.806b8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<div style=\"font-size: 200px; text-align:center;\">{{payload}}</div>",
+        "x": 468.5,
+        "y": 345,
+        "wires": [
+            [
+                "7c9c5662.926318"
+            ]
+        ]
+    },
+    {
+        "id": "7c9c5662.926318",
+        "type": "app",
+        "z": "dd59c2ba.806b8",
+        "name": "",
+        "appId": "webapp",
+        "layout": null,
+        "x": 638,
+        "y": 339,
+        "wires": []
+    }
+]
