@@ -1,0 +1,41 @@
+{
+    "manifest-version": 1,
+    "name": "tlodge-",
+    "version": "0.1.0",
+    "description": "",
+    "author": "tlodge",
+    "licence": "MIT",
+    "databox-type": "app",
+    "tags": "",
+    "homepage": "https://github.com/tlodge/task_story",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/tlodge/task_story.git"
+    },
+    "packages": [
+        {
+            "id": "dd59c2ba.806b8",
+            "name": "new package",
+            "purpose": "",
+            "required": false,
+            "datastores": [
+                "f6c0abf1.81c068"
+            ],
+            "benefits": ""
+        }
+    ],
+    "allowed-combinations": [],
+    "datasources": [
+        {
+            "type": "accelerometer",
+            "required": true,
+            "name": "sensingkit",
+            "clientid": "f6c0abf1.81c068",
+            "granularities": []
+        }
+    ],
+    "network-permissions": [],
+    "resource-requirements": {},
+    "volumes": [],
+    "export-whitelist": []
+}
